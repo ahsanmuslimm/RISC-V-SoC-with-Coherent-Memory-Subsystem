@@ -381,13 +381,16 @@ asic/
 4. Run final STA (setup/hold margins)
 5. Generate power/area/timing reports
 
-### FPGA Deployment
+### FPGA Deployment (F4PGA Open-Source)
 
-1. Synthesize with Vivado (Arty A7-100T)
-2. Generate bitstream
-3. Load on FPGA board
-4. Run UART demo + LED blink
-5. Measure timing/power
+1. Build with F4PGA (Yosys + nextpnr-xilinx)
+   ```bash
+   cd fpga/f4pga && bash build.sh
+   ```
+2. Generate bitstream: `riscv_soc_arty100t.bit`
+3. Program FPGA board: `make program`
+4. Run UART demo + LED blink verification
+5. Measure timing/power consumption
 
 ### Documentation
 
