@@ -12,7 +12,7 @@ vlgt_vars.mk
 *.fst
 *.vvp
 *.out
-.kiro/
+*.kiro/specs/coherence-controller-riscv-soc-bugfix
 ucdb/
 *.ucdb
 vc_hdrs.h
