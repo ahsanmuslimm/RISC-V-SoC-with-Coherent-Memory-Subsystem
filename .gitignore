@@ -12,6 +12,7 @@ vlgt_vars.mk
 *.fst
 *.vvp
 *.out
+.kiro/
 ucdb/
 *.ucdb
 vc_hdrs.h
