@@ -1,0 +1,104 @@
+# =====================================================================
+# LibreLane configuration — riscv_soc_top
+# Project 05: RISC-V Dual-Core SoC with Coherent Memory Subsystem
+#
+# Flow: LibreLane "Classic" (RTL2GDS), sky130A PDK
+# Docs: https://librelane.readthedocs.io/en/latest/reference/configuration.html
+#
+# NOTE (read before running): this file is syntactically and
+# structurally correct per the current LibreLane schema, and its
+# VERILOG_FILES list matches every .sv file that exists in rtl/ today.
+# It does NOT make the design elaborate. riscv_soc_top.sv currently
+# instantiates coherence_ctrl / d_cache / d_cache_mgr with port and
+# parameter names that don't exist on those modules (25 hard errors
+# under `verilator --lint-only`, plus a multi-driver net on rd_addr
+# in rv32i_core.sv). Yosys will fail at the Synthesis step on this
+# RTL exactly the same way Verilator did. Fix the RTL first — run
+# `librelane physical_design/config.yaml --to Yosys.Synthesis` to
+# confirm elaboration succeeds before trusting anything past it.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# Basics
+# ---------------------------------------------------------------------
+DESIGN_NAME: riscv_soc_top
+
+VERILOG_FILES:
+  - dir::../rtl/core/alu.sv
+  - dir::../rtl/core/pc_logic.sv
+  - dir::../rtl/core/reg_file.sv
+  - dir::../rtl/core/control_unit.sv
+  - dir::../rtl/core/rv32i_core.sv
+  - dir::../rtl/memory/i_sram.sv
+  - dir::../rtl/memory/shared_sram.sv
+  - dir::../rtl/memory/sram_reg_array.sv
+  - dir::../rtl/cache/d_cache.sv
+  - dir::../rtl/cache/d_cache_mgr.sv
+  - dir::../rtl/coherence/coherence_ctrl.sv
+  - dir::../rtl/bus/axi_lite_arbiter.sv
+  - dir::../rtl/bus/axi_lite_decoder.sv
+  - dir::../rtl/peripheral/uart_core.sv
+  - dir::../rtl/peripheral/gpio_led.sv
+  - dir::../rtl/peripheral/mmio_regs.sv
+  - dir::../rtl/top/riscv_soc_top.sv
+
+# Clock: 20 MHz ASIC start per docs/DECISIONS.md item T4 (tighten later
+# if timing closes with margin). This is the sky130 clock — unrelated
+# to the FPGA's separate 50 MHz MMCM-derived core clock.
+CLOCK_PORT: clk
+CLOCK_PERIOD: 50.0   # ns -> 20 MHz
+
+# Custom SDC (see physical_design/src/*.sdc). Same constraints are used
+# for PnR-stage optimization and final sign-off STA on this small design;
+# split them later if PnR-stage relaxations become necessary.
+PNR_SDC_FILE: dir::src/pnr.sdc
+SIGNOFF_SDC_FILE: dir::src/signoff.sdc
+
+# Pin placement (see physical_design/pin_order.cfg)
+IO_PIN_ORDER_CFG: dir::pin_order.cfg
+FP_IO_UNMATCHED_ERROR: true    # fail loudly if a port isn't covered by pin_order.cfg
+
+# This is the full chip (not a macro to be embedded in a larger design)
+DESIGN_IS_CORE: true
+
+# ---------------------------------------------------------------------
+# Floorplan
+# ---------------------------------------------------------------------
+FP_SIZING: relative
+FP_ASPECT_RATIO: 1.0
+FP_PDN_CORE_RING: true
+
+# ---------------------------------------------------------------------
+# Power Distribution Network
+# ---------------------------------------------------------------------
+PDN_VOFFSET: 5
+PDN_HOFFSET: 5
+PDN_VWIDTH: 3.1
+PDN_HWIDTH: 3.1
+PDN_VPITCH: 90
+PDN_HPITCH: 90
+PDN_SKIPTRIM: false
+
+# ---------------------------------------------------------------------
+# Synthesis
+# ---------------------------------------------------------------------
+SYNTH_STRATEGY: "AREA 0"
+SYNTH_MAX_FANOUT: 10
+
+# ---------------------------------------------------------------------
+# Sign-off
+# ---------------------------------------------------------------------
+RUN_KLAYOUT_XOR: true
+MAGIC_DRC_USE_GDS: true
+
+# ---------------------------------------------------------------------
+# Technology-specific overrides (only applied when PDK matches)
+# ---------------------------------------------------------------------
+pdk::sky130*:
+  STD_CELL_LIBRARY: sky130_fd_sc_hd
+  FP_CORE_UTIL: 45
+  PL_TARGET_DENSITY: 0.55
+  MAX_FANOUT_CONSTRAINT: 8
+
+  scl::sky130_fd_sc_hd:
+    CLOCK_PERIOD: 50.0
