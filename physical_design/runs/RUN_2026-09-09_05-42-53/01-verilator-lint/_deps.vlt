@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/tmp/6c45934555674d349ce7b86cf45e6fd1.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/tmp/6c45934555674d349ce7b86cf45e6fd1.bb.v"

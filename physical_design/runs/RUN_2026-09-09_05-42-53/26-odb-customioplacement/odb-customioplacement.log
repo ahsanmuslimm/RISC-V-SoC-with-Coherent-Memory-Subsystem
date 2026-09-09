@@ -1,0 +1,41 @@
+[WARNING ORD-0039] .openroad ignored with -python
+Top-level design name: riscv_soc_top
+Block boundaries: 0 0 159715 170435
+Horizontal Tracks Origin: 340, Count: 250, Step: 680
+Vertical Tracks Origin: 230, Count: 347, Step: 460
+Placement details for the N side
+Virtual pin count:  0
+Actual pin count:  4
+Total pin count:  4
+Tracks count:  347
+Tracks per pin:  86
+Used tracks count:  259
+Unused track count:  88
+Starting track index:  44
+Placement details for the E side
+Virtual pin count:  0
+Actual pin count:  2
+Total pin count:  2
+Tracks count:  125
+Tracks per pin:  62
+Used tracks count:  63
+Unused track count:  62
+Starting track index:  31
+Placement details for the W side
+Virtual pin count:  0
+Actual pin count:  2
+Total pin count:  2
+Tracks count:  125
+Tracks per pin:  62
+Used tracks count:  63
+Unused track count:  62
+Starting track index:  31
+Placement details for the S side
+Virtual pin count:  0
+Actual pin count:  4
+Total pin count:  4
+Tracks count:  347
+Tracks per pin:  86
+Used tracks count:  259
+Unused track count:  88
+Starting track index:  44

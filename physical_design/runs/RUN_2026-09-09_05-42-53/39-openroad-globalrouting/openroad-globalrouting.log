@@ -1,0 +1,127 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading OpenROAD database at '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/37-openroad-resizertimingpostcts/riscv_soc_top.odb'…
+Reading design constraints file at '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/src/pnr.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[INFO] Setting signal min routing layer to: met1 and clock min routing layer to met1. 
+[INFO] Setting signal max routing layer to: met5 and clock max routing layer to met5. 
++ global_route -congestion_iterations 50 -verbose
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 30%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0003] Macros: 0
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VPWR has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[WARNING GRT-0041] Net VGND has wires/vias outside die area.
+[INFO GRT-0004] Blockages: 2890
+[INFO GRT-0019] Found 50 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 17
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal       7286          4862          33.27%
+met2       Vertical         7365          4873          33.84%
+met3       Horizontal       5386          3682          31.64%
+met4       Vertical         3588          2162          39.74%
+met5       Horizontal        902           484          46.34%
+---------------------------------------------------------------
+
+[INFO GRT-0101] Running extra iterations to remove overflow.
+[INFO GRT-0102] Start extra iteration 1/50
+[INFO GRT-0102] Start extra iteration 2/50
+[INFO GRT-0102] Start extra iteration 3/50
+[INFO GRT-0197] Via related to pin nodes: 5668
+[INFO GRT-0198] Via related Steiner nodes: 108
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 7036
+[INFO GRT-0112] Final usage 3D: 23910
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1                  0             0            0.00%             0 /  0 /  0
+met1              4862          1255           25.81%             0 /  0 /  0
+met2              4873          1493           30.64%             0 /  0 /  0
+met3              3682            45            1.22%             0 /  0 /  0
+met4              2162             9            0.42%             0 /  0 /  0
+met5               484             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total            16063          2802           17.44%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 34644 um
+[INFO GRT-0014] Routed nets: 1022
+[INFO GRT-0303] Global routing runtime = 00:00:00
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+[INFO ODB-0403] 0 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               108     405.39
+  Tap cell                                308     385.37
+  Buffer                                    5      25.02
+  Clock buffer                             56    1098.55
+  Timing Repair Buffer                    200    2001.92
+  Inverter                                 23      86.33
+  Sequential cell                         196    5149.94
+  Multi-Input combinational cell          547    4685.74
+  Total                                  1443   13838.27
+Writing OpenROAD database to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/39-openroad-globalrouting/riscv_soc_top.odb'…
+Writing layout to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/39-openroad-globalrouting/riscv_soc_top.def'…

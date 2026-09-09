@@ -204,7 +204,11 @@ module d_cache_mgr #(
 
       HIT_WRITE: begin
         cache_wr_idx                = cache_hit_idx;
-        cache_wr_data               = merge_bytes(cache_hit_data, dmem_wdata, dmem_wmask);
+        // Inline byte-masked write merge
+        cache_wr_data[7:0]   = dmem_wmask[0] ? dmem_wdata[7:0]   : cache_hit_data[7:0];
+        cache_wr_data[15:8]  = dmem_wmask[1] ? dmem_wdata[15:8]  : cache_hit_data[15:8];
+        cache_wr_data[23:16] = dmem_wmask[2] ? dmem_wdata[23:16] : cache_hit_data[23:16];
+        cache_wr_data[31:24] = dmem_wmask[3] ? dmem_wdata[31:24] : cache_hit_data[31:24];
         cache_wr_tag                = dmem_addr[31:4];
         cache_wr_state              = 2'b10;  // M
         cache_wr_valid              = 1'b1;
@@ -241,7 +245,11 @@ module d_cache_mgr #(
         // not m_rdata directly, for the cache write data.
         if (!uncached) begin
           if (pending_store) begin
-            cache_wr_data  = merge_bytes(fill_data_q, wdata_q, wmask_q);
+            // Inline byte-masked write merge
+            cache_wr_data[7:0]   = wmask_q[0] ? wdata_q[7:0]   : fill_data_q[7:0];
+            cache_wr_data[15:8]  = wmask_q[1] ? wdata_q[15:8]  : fill_data_q[15:8];
+            cache_wr_data[23:16] = wmask_q[2] ? wdata_q[23:16] : fill_data_q[23:16];
+            cache_wr_data[31:24] = wmask_q[3] ? wdata_q[31:24] : fill_data_q[31:24];
             cache_wr_state = 2'b10;  // M (store miss)
           end else begin
             cache_wr_data  = fill_data_q;
@@ -372,22 +380,5 @@ module d_cache_mgr #(
       end
     end
   end
-
-  // ==================== Helper Functions ====================
-  function logic [31:0] merge_bytes (
-    logic [31:0] old_data,
-    logic [31:0] new_data,
-    logic [3:0]  mask
-  );
-    logic [31:0] result;
-    for (int i = 0; i < 4; i++) begin
-      if (mask[i]) begin
-        result[i*8 +: 8] = new_data[i*8 +: 8];
-      end else begin
-        result[i*8 +: 8] = old_data[i*8 +: 8];
-      end
-    end
-    return result;
-  endfunction
 
 endmodule

@@ -168,18 +168,62 @@ module riscv_soc_top (
     logic [1:0]  coh_inv_idx      [0:1];
     logic        coh_inv_ack      [0:1];
     
-    // Line state export (for R6 dispatch)
-    logic [7:0]  coh_line_state   [0:1];  // 4 lines × 2 bits per line
-    logic [3:0]  coh_line_valid   [0:1];  // 4 lines × 1 bit
+    // Line state export — intermediate packed signals from d_cache
+    logic [3:0]   dcache_line_valid_packed [0:1];        // [core] packed 4-bit valid
+    logic [7:0]   dcache_coh_state_packed [0:1];        // [core] packed 8-bit state (2-bit per line)
+    
+    // Packed signals for coherence_ctrl (convert unpacked to packed)
+    logic [7:0]   coh_state0_packed, coh_state1_packed;
+    logic [3:0]   coh_valid0_packed, coh_valid1_packed;
+    
+    // Unpacked arrays for coherence_ctrl and internal use
+    logic [1:0]  dcache_coh_state [0:1][3:0];           // [core][line] = 2-bit I/S/M
+    logic        dcache_line_valid [0:1][3:0];          // [core][line] = 1-bit valid
+    
+    // Pack/unpack conversion - flatten intermediate packed signals
+    generate
+      for (genvar i = 0; i < 4; i++) begin : unpack_state_core0
+        assign dcache_coh_state[0][i] = dcache_coh_state_packed[0][i*2 +: 2];
+        assign dcache_line_valid[0][i] = dcache_line_valid_packed[0][i];
+      end
+      for (genvar i = 0; i < 4; i++) begin : unpack_state_core1
+        assign dcache_coh_state[1][i] = dcache_coh_state_packed[1][i*2 +: 2];
+        assign dcache_line_valid[1][i] = dcache_line_valid_packed[1][i];
+      end
+      // Pack for coherence_ctrl
+      for (genvar i = 0; i < 4; i++) begin : pack_for_coh
+        assign coh_state0_packed[i*2 +: 2] = dcache_coh_state[0][i];
+        assign coh_valid0_packed[i]         = dcache_line_valid[0][i];
+        assign coh_state1_packed[i*2 +: 2] = dcache_coh_state[1][i];
+        assign coh_valid1_packed[i]         = dcache_line_valid[1][i];
+      end
+    endgenerate
     
     // =====================================================================
     // EVENT SIGNALS
     // =====================================================================
     
-    logic        hit  [0:1], miss [0:1], err [0:1];
     logic        inv_fire;
     logic [15:0] coh_status;
-    logic        coh_enable, cnt_clear, err_clear, err_sticky;
+    logic        coh_enable, err_sticky;
+    
+    // Per-core d_cache ↔ d_cache_mgr interconnect
+    // Cache hit/miss/data outputs (from d_cache, inputs to d_cache_mgr)
+    logic        dc_hit       [0:1];
+    logic        dc_miss      [0:1];
+    logic [1:0]  dc_hit_idx   [0:1];
+    logic [31:0] dc_hit_data  [0:1];
+    // Cache write-back outputs (from d_cache_mgr, inputs to d_cache)
+    logic [1:0]  dc_wr_idx    [0:1];
+    logic [31:0] dc_wr_data   [0:1];
+    logic [27:0] dc_wr_tag    [0:1];
+    logic [1:0]  dc_wr_state  [0:1];
+    logic        dc_wr_valid  [0:1];
+    logic [3:0]  dc_wr_we     [0:1];  // 1-hot, matches wr_we[LINES-1:0]
+    // Event outputs from d_cache_mgr
+    logic        dc_hit_event  [0:1];
+    logic        dc_miss_event [0:1];
+    logic        dc_err_event  [0:1];
     
     // =====================================================================
     // INSTANTIATE CORES + I-SRAM + D-CACHE + PERIPHERALS (GENERATE LOOP)
@@ -216,51 +260,64 @@ module riscv_soc_top (
             // Instruction SRAM (async read, 256 × 32, 1 KB per core)
             // -----------------------------------------------------------
             i_sram #(
-                .DEPTH(256),
-                .ASYNC_READ(1)
+                .DEPTH(256)
+                // No ASYNC_READ parameter — i_sram is always async-read
             ) u_isram (
                 .clk(clk),
                 .rst_n(rst_sync_n),
                 
-                .addr(c_imem_addr[c]),
-                .rdata(c_imem_rdata[c])
+                // Read port (async, combinational)
+                .raddr(c_imem_addr[c][7:0]),  // addr[7:0] selects word (DEPTH=256)
+                .rdata(c_imem_rdata[c]),
+                
+                // Write port tied off (initialization only, not used at runtime)
+                .waddr(8'h0),
+                .wdata(32'h0),
+                .we(1'b0)
             );
             
             // -----------------------------------------------------------
             // Data Cache (4-line direct-mapped)
             // -----------------------------------------------------------
             d_cache #(
-                .LINES(4),
-                .CORE_ID(c)
+                .LINES(4)
+                // No CORE_ID parameter on d_cache
             ) u_dcache (
                 .clk(clk),
                 .rst_n(rst_sync_n),
                 
                 // Request side
                 .req_addr(c_dmem_addr[c]),
-                .hit(hit[c]),
-                .miss(miss[c]),
-                .hit_idx(),
-                .hit_data(),
+                .hit(dc_hit[c]),
+                .miss(dc_miss[c]),
+                .hit_idx(dc_hit_idx[c]),
+                .hit_data(dc_hit_data[c]),
                 
-                // Line state export (for R6 coherence dispatch)
-                .line_valid(coh_line_valid[c]),
-                .line_state(coh_line_state[c]),
+                // Line state export (packed from d_cache)
+                .line_valid(dcache_line_valid_packed[c]),
+                .line_coh_state(dcache_coh_state_packed[c]),
+                .line_req_idx(),           // not used at top level
+                .line_out(),               // debug port, not needed at top level
                 
                 // Write side (from cache manager)
-                .wr_idx(coh_inv_idx[c]),
-                .wr_we(1'b1),
-                .wr_data(32'h0),
-                .wr_tag(28'h0),
-                .wr_state(2'b00)  // Invalidate
+                .wr_idx(dc_wr_idx[c]),
+                .wr_data(dc_wr_data[c]),
+                .wr_tag(dc_wr_tag[c]),
+                .wr_state(dc_wr_state[c]),
+                .wr_valid(dc_wr_valid[c]),
+                .wr_we(dc_wr_we[c]),
+                
+                // Invalidation from coherence controller
+                .inv_idx(coh_inv_idx[c]),
+                .inv_we(coh_inv_valid[c])
             );
             
             // -----------------------------------------------------------
             // Data Cache Manager (13-state FSM)
             // -----------------------------------------------------------
             d_cache_mgr #(
-                .LINES(4),
                 .CORE_ID(c)
+                // No LINES parameter on d_cache_mgr
             ) u_dcmgr (
                 .clk(clk),
                 .rst_n(rst_sync_n),
@@ -275,14 +332,19 @@ module riscv_soc_top (
                 .dmem_ack(c_dmem_ack[c]),
                 .dmem_err(c_dmem_err[c]),
                 
-                // Cache-side (hit/miss)
-                .hit(hit[c]),
-                .miss(miss[c]),
-                .err(err[c]),
+                // Cache storage interface (d_cache outputs → d_cache_mgr inputs)
+                .cache_hit(dc_hit[c]),
+                .cache_miss(dc_miss[c]),
+                .cache_hit_idx(dc_hit_idx[c]),
+                .cache_hit_data(dc_hit_data[c]),
                 
-                // Cache line state (R6 dispatch)
-                .line_valid(coh_line_valid[c]),
-                .line_state(coh_line_state[c]),
+                // Cache write-back (d_cache_mgr outputs → d_cache inputs)
+                .cache_wr_idx(dc_wr_idx[c]),
+                .cache_wr_data(dc_wr_data[c]),
+                .cache_wr_tag(dc_wr_tag[c]),
+                .cache_wr_state(dc_wr_state[c]),
+                .cache_wr_valid(dc_wr_valid[c]),
+                .cache_wr_we(dc_wr_we[c]),
                 
                 // AXI4-Lite master port
                 .m_awvalid(m_awvalid[c]),
@@ -314,7 +376,12 @@ module riscv_soc_top (
                 .coh_fill_idx(coh_fill_idx[c]),
                 .coh_inv_valid(coh_inv_valid[c]),
                 .coh_inv_idx(coh_inv_idx[c]),
-                .coh_inv_ack(coh_inv_ack[c])
+                .coh_inv_ack(coh_inv_ack[c]),
+                
+                // Event outputs
+                .hit_event(dc_hit_event[c]),
+                .miss_event(dc_miss_event[c]),
+                .err_event(dc_err_event[c])
             );
             
         end : per_core
@@ -323,38 +390,45 @@ module riscv_soc_top (
     // =====================================================================
     // COHERENCE CONTROLLER (1 instance, services both cores)
     // =====================================================================
+    // coherence_ctrl has NO parameters. All ports are individual per-core
+    // signals — NOT packed vectors. Map arrays [0] and [1] explicitly.
     
-    coherence_ctrl #(
-        .LINES(4)
-    ) u_coh (
+    coherence_ctrl u_coh (
         .clk(clk),
         .rst_n(rst_sync_n),
         
-        // Write notify from cache managers (per core)
-        .write_notify_i({coh_write_notify[1], coh_write_notify[0]}),
-        .write_addr_i({coh_write_addr[1], coh_write_addr[0]}),
-        .coh_accept_o({coh_accept[1], coh_accept[0]}),
+        // Write notifications (per core, individual ports)
+        .write_notify0(coh_write_notify[0]),
+        .write_addr0(coh_write_addr[0]),
+        .write_notify1(coh_write_notify[1]),
+        .write_addr1(coh_write_addr[1]),
+        .coh_accept0(coh_accept[0]),
+        .coh_accept1(coh_accept[1]),
         
-        // Fill notify from cache managers (per core)
-        .fill_notify_i({coh_fill_notify[1], coh_fill_notify[0]}),
-        .fill_idx_i({coh_fill_idx[1], coh_fill_idx[0]}),
+        // Fill notifications (per core, individual ports)
+        .fill_notify0(coh_fill_notify[0]),
+        .fill_idx0(coh_fill_idx[0]),
+        .fill_notify1(coh_fill_notify[1]),
+        .fill_idx1(coh_fill_idx[1]),
         
-        // Invalidation to cache managers (per core)
-        .inv_valid_o({coh_inv_valid[1], coh_inv_valid[0]}),
-        .inv_idx_o({coh_inv_idx[1], coh_inv_idx[0]}),
-        .inv_ack_i({coh_inv_ack[1], coh_inv_ack[0]}),
+        // Invalidation dispatch (per core, individual ports)
+        .inv_valid0(coh_inv_valid[0]),
+        .inv_idx0(coh_inv_idx[0]),
+        .inv_ack0(coh_inv_ack[0]),
+        .inv_valid1(coh_inv_valid[1]),
+        .inv_idx1(coh_inv_idx[1]),
+        .inv_ack1(coh_inv_ack[1]),
         
-        // Cache line state export (R6, per core)
-        .line_state_i({coh_line_state[1], coh_line_state[0]}),
-        .line_valid_i({coh_line_valid[1], coh_line_valid[0]}),
+        // Actual cache line states (packed for synthesis)
+        .state0_i(coh_state0_packed),
+        .valid0_i(coh_valid0_packed),
+        .state1_i(coh_state1_packed),
+        .valid1_i(coh_valid1_packed),
         
-        // Status to MMIO
-        .coh_status_o(coh_status),
-        .inv_fire_o(inv_fire),
-        
-        // Control from MMIO
-        .coh_enable_i(coh_enable),
-        .err_clear_i(err_clear)
+        // Control & status (no _i/_o suffixes in coherence_ctrl port list)
+        .coh_enable(coh_enable),
+        .inv_fire(inv_fire),
+        .coh_status(coh_status)
     );
     
     // =====================================================================
@@ -585,19 +659,22 @@ module riscv_soc_top (
         .rresp(mmio_rresp),
         .rready(mmio_rready),
         
-        // Event inputs
-        .hit0(hit[0]),
-        .hit1(hit[1]),
-        .miss0(miss[0]),
-        .miss1(miss[1]),
-        .err0(err[0]),
-        .err1(err[1]),
+        // Event inputs — use dc_hit_event/miss_event/err_event from managers
+        .hit0(dc_hit_event[0]),
+        .hit1(dc_hit_event[1]),
+        .miss0(dc_miss_event[0]),
+        .miss1(dc_miss_event[1]),
+        .err0(dc_err_event[0]),
+        .err1(dc_err_event[1]),
         .inv_fire(inv_fire),
         .coh_status(coh_status),
         
         // Control outputs
         .coh_enable(coh_enable),
-        .err_sticky(err_sticky)
+        .err_sticky(err_sticky),
+        
+        // Doorbell output (missing in original instantiation)
+        .doorbell()             // not consumed at top level; left unconnected
     );
     
     // UART Core (115200 8N1)
@@ -653,14 +730,14 @@ module riscv_soc_top (
         .rresp(gpio_rresp),
         .rready(gpio_rready),
         
-        // Event inputs
+        // Event inputs — use dc_hit_event/miss_event from cache managers
         .dmem_ack0(c_dmem_ack[0]),
         .dmem_ack1(c_dmem_ack[1]),
         .inv_fire(inv_fire),
-        .hit0(hit[0]),
-        .hit1(hit[1]),
-        .miss0(miss[0]),
-        .miss1(miss[1]),
+        .hit0(dc_hit_event[0]),
+        .hit1(dc_hit_event[1]),
+        .miss0(dc_miss_event[0]),
+        .miss1(dc_miss_event[1]),
         .err_sticky(err_sticky),
         
         // LED output

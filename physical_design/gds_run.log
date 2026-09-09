@@ -1,0 +1,11 @@
+[10:30:13] INFO     Running containerized command:              container.py:285
+[2;36m[05:30:13][0m[2;36m [0m[34mINFO    [0m Starting a new run of the [32m'Classic'[0m flow with    ]8;id=668422;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/flows/flow.py\[2mflow.py[0m]8;;\[2m:[0m]8;id=112481;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/flows/flow.py#654\[2m654[0m]8;;\
+[2;36m           [0m         the tag [32m'RUN_2026-09-09_05-30-13'[0m.               [2m           [0m
+[?25l[2KClassic [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m  0/100[0m [33m0:00:00[0m[2KClassic [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m  0/100[0m [33m0:00:00[0m
+[?25h[2;36m[05:30:13][0m[2;36m [0m[1;31mERROR   [0m [31mThe flow has encountered an unexpected [0m      ]8;id=683790;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/__main__.py\[2m__main__.py[0m]8;;\[2m:[0m]8;id=596917;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/__main__.py#185\[2m185[0m]8;;\
+[2;36m           [0m         [31merror:[0m                                       [2m               [0m
+[2;36m           [0m         [31mFailed to process [0m[32m'GDS'[0m[31m: no [0m[1;35mstep[0m[1;31m([0m[31ms[0m[1;31m)[0m[31m with ID [0m [2m               [0m
+[2;36m           [0m         [32m'GDS'[0m[31m found in flow. Did you mean: [0m          [2m               [0m
+[2;36m           [0m         [32m'Checker.LintWarnings'[0m[31m?[0m                      [2m               [0m
+[2;36m[05:30:13][0m[2;36m [0m[1;31mERROR   [0m [31mLibreLane will now quit.[0m                     ]8;id=214723;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/__main__.py\[2m__main__.py[0m]8;;\[2m:[0m]8;id=132964;file:///nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/__main__.py#186\[2m186[0m]8;;\
+[?25h

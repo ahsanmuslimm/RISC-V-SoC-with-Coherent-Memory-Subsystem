@@ -1,0 +1,270 @@
+%Warning-PINCONNECTEMPTY: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:299:18: Instance pin connected by name with empty reference: 'line_req_idx'
+  299 |                 .line_req_idx(),            
+      |                  ^~~~~~~~~~~~
+                          ... For warning description see https://verilator.org/warn/PINCONNECTEMPTY?v=5.044
+                          ... Use "/* verilator lint_off PINCONNECTEMPTY */" and lint_on around source to disable this message.
+%Warning-PINCONNECTEMPTY: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:300:18: Instance pin connected by name with empty reference: 'line_out'
+  300 |                 .line_out(),                
+      |                  ^~~~~~~~
+%Warning-PINCONNECTEMPTY: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:677:10: Instance pin connected by name with empty reference: 'doorbell'
+  677 |         .doorbell()              
+      |          ^~~~~~~~
+%Warning-WIDTHTRUNC: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/sram_reg_array.sv:41:3: Logical operator GENIF expects 1 bit on the If, but If's VARREF 'ASYNC_READ' generates 32 bits.
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram.u_sram'
+   41 |   if (ASYNC_READ) begin : async_read_mode
+      |   ^~
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.044
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:51:16: Operator ASSIGNW expects 13 bits on the Assign RHS, but Assign RHS's REPLICATE generates 12 bits.
+                                                                                                                         : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   51 |   assign imm_b = {instr[31], instr[7], instr[30:25], instr[11:8]};   
+      |                ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.044
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:53:16: Operator ASSIGNW expects 21 bits on the Assign RHS, but Assign RHS's REPLICATE generates 20 bits.
+                                                                                                                         : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   53 |   assign imm_j = {instr[31], instr[19:12], instr[20], instr[30:21]};   
+      |                ^
+%Warning-WIDTHTRUNC: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:65:20: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 33 bits.
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   65 |   assign imm_b_ext = {{19{imm_b[12]}}, imm_b, 1'b0};   
+      |                    ^
+%Warning-WIDTHTRUNC: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:67:20: Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 33 bits.
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   67 |   assign imm_j_ext = {{11{imm_j[20]}}, imm_j, 1'b0};   
+      |                    ^
+%Warning-WIDTHEXPAND: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:212:24: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 8 bits.
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+  212 |             rdata_comb = {sw_led_q, 6'b0};   
+      |                        ^
+%Warning-WIDTHEXPAND: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:56:21: Operator ASSIGNW expects 11 bits on the Assign RHS, but Assign RHS's SEL generates 10 bits.
+                                                                                                                          : ... note: In instance 'riscv_soc_top.u_sram'
+   56 |   assign waddr_word = awaddr[11:2];
+      |                     ^
+%Warning-WIDTHEXPAND: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:57:21: Operator ASSIGNW expects 11 bits on the Assign RHS, but Assign RHS's SEL generates 10 bits.
+                                                                                                                          : ... note: In instance 'riscv_soc_top.u_sram'
+   57 |   assign raddr_word = araddr[11:2];
+      |                     ^
+%Warning-WIDTHTRUNC: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:66:6: Input port connection 'raddr' expects 10 bits on the pin connection, but pin connection's VARREF 'raddr_word' generates 11 bits.
+                                                                                                                        : ... note: In instance 'riscv_soc_top.u_sram'
+   66 |     .raddr (raddr_word),
+      |      ^~~~~
+%Warning-WIDTHTRUNC: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:68:6: Input port connection 'waddr' expects 10 bits on the pin connection, but pin connection's VARREF 'waddr_word' generates 11 bits.
+                                                                                                                        : ... note: In instance 'riscv_soc_top.u_sram'
+   68 |     .waddr (waddr_word),
+      |      ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:128:18: Signal is not used: 'sel_sram'
+                                                                                                                           : ... note: In instance 'riscv_soc_top'
+  128 |     logic        sel_sram, sel_mmio, sel_uart, sel_gpio;
+      |                  ^~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.044
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:128:28: Signal is not used: 'sel_mmio'
+                                                                                                                           : ... note: In instance 'riscv_soc_top'
+  128 |     logic        sel_sram, sel_mmio, sel_uart, sel_gpio;
+      |                            ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:128:38: Signal is not used: 'sel_uart'
+                                                                                                                           : ... note: In instance 'riscv_soc_top'
+  128 |     logic        sel_sram, sel_mmio, sel_uart, sel_gpio;
+      |                                      ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv:128:48: Signal is not used: 'sel_gpio'
+                                                                                                                           : ... note: In instance 'riscv_soc_top'
+  128 |     logic        sel_sram, sel_mmio, sel_uart, sel_gpio;
+      |                                                ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:37:23: Signal is not used: 'dmem_err'
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core'
+   37 |   input  logic        dmem_err           
+      |                       ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:67:16: Signal is not driven, nor used: 'rf_wa_cu'
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core'
+   67 |   logic [4:0]  rf_wa_cu;
+      |                ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:73:16: Signal is not used: 'ls_ctrl'
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core'
+   73 |   logic [3:0]  ls_ctrl;
+      |                ^~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:75:16: Signal is not used: 'is_jump'
+                                                                                                                        : ... note: In instance 'riscv_soc_top.per_core[1].u_core'
+   75 |   logic        is_jump;
+      |                ^~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/i_sram.sv:22:31: Signal is not used: 'rst_n'
+                                                                                                                      : ... note: In instance 'riscv_soc_top.per_core[1].u_isram'
+   22 |   input  logic                rst_n,      
+      |                               ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:36:23: Signal is not used: 'bready'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   36 |   input  logic        bready,
+      |                       ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:51:16: Bits of signal are not used: 'waddr_word'[10]
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   51 |   logic [10:0] waddr_word;      
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:52:16: Bits of signal are not used: 'raddr_word'[10]
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   52 |   logic [10:0] raddr_word;      
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:92:16: Signal is not used: 'awaddr_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   92 |   logic [31:0] awaddr_q;
+      |                ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:93:16: Signal is not used: 'wdata_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   93 |   logic [31:0] wdata_q;
+      |                ^~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:94:16: Signal is not used: 'wstrb_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.u_sram'
+   94 |   logic [3:0]  wstrb_q;
+      |                ^~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv:146:16: Signal is not used: 'araddr_q'
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_sram'
+  146 |   logic [31:0] araddr_q;
+      |                ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache.sv:35:23: Bits of signal are not used: 'req_addr'[1:0]
+                                                                                                                      : ... note: In instance 'riscv_soc_top.per_core[1].u_dcache'
+   35 |   input  logic [31:0] req_addr,           
+      |                       ^~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache.sv:55:23: Signal is not used: 'wr_idx'
+                                                                                                                      : ... note: In instance 'riscv_soc_top.per_core[1].u_dcache'
+   55 |   input  logic [1:0]  wr_idx,             
+      |                       ^~~~~~
+%Warning-UNUSEDPARAM: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:42:17: Parameter is not used: 'CORE_ID'
+                                                                                                                         : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+   42 |   parameter int CORE_ID = 0          
+      |                 ^~~~~~~
+                      ... For warning description see https://verilator.org/warn/UNUSEDPARAM?v=5.044
+                      ... Use "/* verilator lint_off UNUSEDPARAM */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:59:23: Signal is not used: 'cache_miss'
+                                                                                                                          : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+   59 |   input  logic        cache_miss,
+      |                       ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:76:23: Signal is not used: 'coh_inv_idx'
+                                                                                                                          : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+   76 |   input  logic [1:0]  coh_inv_idx,
+      |                       ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:95:23: Signal is not used: 'm_rresp'
+                                                                                                                          : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+   95 |   input  logic [1:0]  m_rresp,
+      |                       ^~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:130:16: Signal is not used: 'we_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+  130 |   logic        we_q;             
+      |                ^~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:131:16: Signal is not driven, nor used: 'is_write_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+  131 |   logic        is_write_q;       
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:135:16: Signal is not used: 'fill_idx_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+  135 |   logic [1:0]  fill_idx_q;       
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:136:16: Signal is not used: 'fill_tag_q'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+  136 |   logic [27:0] fill_tag_q;       
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv:138:16: Signal is not used: 'notify_pending'
+                                                                                                                           : ... note: In instance 'riscv_soc_top.per_core[1].u_dcmgr'
+  138 |   logic        notify_pending;   
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/coherence/coherence_ctrl.sv:42:23: Bits of signal are not used: 'write_addr0'[31:4,1:0]
+                                                                                                                                 : ... note: In instance 'riscv_soc_top.u_coh'
+   42 |   input  logic [31:0] write_addr0,
+      |                       ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/coherence/coherence_ctrl.sv:44:23: Bits of signal are not used: 'write_addr1'[31:4,1:0]
+                                                                                                                                 : ... note: In instance 'riscv_soc_top.u_coh'
+   44 |   input  logic [31:0] write_addr1,
+      |                       ^~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv:34:25: Bits of signal are not used: 'awaddr'[31:8]
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_uart'
+   34 |     input  logic [31:0] awaddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv:37:25: Bits of signal are not used: 'wdata'[31:8]
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_uart'
+   37 |     input  logic [31:0] wdata,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv:38:25: Signal is not used: 'wstrb'
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_uart'
+   38 |     input  logic [3:0]  wstrb,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv:44:25: Bits of signal are not used: 'araddr'[31:8]
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_uart'
+   44 |     input  logic [31:0] araddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv:81:11: Signal is not driven, nor used: 'bresp_valid_d'
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_uart'
+   81 |     logic bresp_valid_d, bresp_valid_q;
+      |           ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:30:25: Bits of signal are not used: 'awaddr'[31:8]
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+   30 |     input  logic [31:0] awaddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:33:25: Bits of signal are not used: 'wdata'[31:8,5:0]
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+   33 |     input  logic [31:0] wdata,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:34:25: Signal is not used: 'wstrb'
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+   34 |     input  logic [3:0]  wstrb,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:40:25: Bits of signal are not used: 'araddr'[31:8]
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+   40 |     input  logic [31:0] araddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv:84:11: Signal is not driven, nor used: 'bresp_valid_d'
+                                                                                                                            : ... note: In instance 'riscv_soc_top.u_gpio'
+   84 |     logic bresp_valid_d, bresp_valid_q;
+      |           ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv:30:25: Bits of signal are not used: 'awaddr'[31:8]
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_mmio'
+   30 |     input  logic [31:0] awaddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv:34:25: Signal is not used: 'wstrb'
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_mmio'
+   34 |     input  logic [3:0]  wstrb,
+      |                         ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv:40:25: Bits of signal are not used: 'araddr'[31:8]
+                                                                                                                             : ... note: In instance 'riscv_soc_top.u_mmio'
+   40 |     input  logic [31:0] araddr,
+      |                         ^~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv:101:11: Signal is not driven, nor used: 'bresp_valid_d'
+                                                                                                                              : ... note: In instance 'riscv_soc_top.u_mmio'
+  101 |     logic bresp_valid_d, bresp_valid_q;
+      |           ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv:44:76: Signal is not driven, nor used: 'shift_level_16'
+                                                                                                                 : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_alu'
+   44 |   logic [31:0] shift_level_1, shift_level_2, shift_level_4, shift_level_8, shift_level_16;
+      |                                                                            ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv:53:68: Signal is not driven, nor used: 'srl_level_16'
+                                                                                                                 : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_alu'
+   53 |   logic [31:0] srl_level_1, srl_level_2, srl_level_4, srl_level_8, srl_level_16;
+      |                                                                    ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv:62:68: Signal is not driven, nor used: 'sra_level_16'
+                                                                                                                 : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_alu'
+   62 |   logic [31:0] sra_level_1, sra_level_2, sra_level_4, sra_level_8, sra_level_16;
+      |                                                                    ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv:63:16: Signal is not used: 'sign_ext_8'
+                                                                                                                 : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_alu'
+   63 |   logic [7:0]  sign_ext_8;
+      |                ^~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:32:16: Signal is not used: 'rs1'
+                                                                                                                          : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   32 |   logic [4:0]  rs1;
+      |                ^~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv:34:16: Bits of signal are not used: 'func7'[6,4:0]
+                                                                                                                          : ... note: In instance 'riscv_soc_top.per_core[1].u_core.u_cu'
+   34 |   logic [6:0]  func7;
+      |                ^~~~~
+%Warning-UNUSEDSIGNAL: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/sram_reg_array.sv:24:35: Signal is not used: 'rst_n'
+                                                                                                                              : ... note: In instance 'riscv_soc_top.u_sram.u_sram'
+   24 |   input  logic                    rst_n,
+      |                                   ^~~~~
+%Warning-CASEINCOMPLETE: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:223:7: Case values incompletely covered (example pattern 0x3)
+  223 |       case (func3)
+      |       ^~~~
+                         ... For warning description see https://verilator.org/warn/CASEINCOMPLETE?v=5.044
+                         ... Use "/* verilator lint_off CASEINCOMPLETE */" and lint_on around source to disable this message.
+%Warning-CASEINCOMPLETE: /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv:254:7: Case values incompletely covered (example pattern 0x3)
+  254 |       case (func3)
+      |       ^~~~
+- V e r i l a t i o n   R e p o r t: Verilator 5.044 2026-01-01 rev v5.040
+- Verilator: Built from 4.997 MB sources in 464 modules, into 0.735 MB in 3 C++ files needing 0.000 MB
+- Verilator: Walltime 0.230 s (elab=0.032, cvt=0.140, bld=0.000); cpu 0.230 s on 1 threads; alloced 33.113 MB

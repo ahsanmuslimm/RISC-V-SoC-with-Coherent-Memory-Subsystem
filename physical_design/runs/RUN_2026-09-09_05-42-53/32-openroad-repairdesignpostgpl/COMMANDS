@@ -1,0 +1,1 @@
+openroad -exit -no_splash -metrics /home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/32-openroad-repairdesignpostgpl/or_metrics_out.json /nix/store/5jsqcdxd774ydqqjk8zkw3zk47dxbryb-python3-3.13.9-env/lib/python3.13/site-packages/librelane/scripts/openroad/repair_design.tcl

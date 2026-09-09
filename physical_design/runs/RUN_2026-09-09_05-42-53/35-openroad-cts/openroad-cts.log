@@ -1,0 +1,159 @@
+Reading timing models for corner max_tt_025C_1v80…
+Reading timing library for the 'max_tt_025C_1v80' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner min_ss_100C_1v60…
+Reading timing library for the 'min_ss_100C_1v60' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 1, library sky130_fd_sc_hd__tt_025C_1v80 already exists.
+Reading timing models for corner max_ff_n40C_1v95…
+Reading timing library for the 'max_ff_n40C_1v95' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib line 1, library sky130_fd_sc_hd__ff_n40C_1v95 already exists.
+Reading timing models for corner max_ss_100C_1v60…
+Reading timing library for the 'max_ss_100C_1v60' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib line 1, library sky130_fd_sc_hd__ss_100C_1v60 already exists.
+Reading timing models for corner min_tt_025C_1v80…
+Reading timing library for the 'min_tt_025C_1v80' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib line 1, library sky130_fd_sc_hd__tt_025C_1v80 already exists.
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib line 1, library sky130_fd_sc_hd__ss_100C_1v60 already exists.
+Reading timing models for corner min_ff_n40C_1v95…
+Reading timing library for the 'min_ff_n40C_1v95' corner at '/home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+[WARNING STA-1140] /home/cl4/.ciel/ciel/sky130/versions/8afc8346a57fe1ab7934ba5a6056ea8b43078e71/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib line 1, library sky130_fd_sc_hd__ff_n40C_1v95 already exists.
+Reading OpenROAD database at '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/34-openroad-detailedplacement/riscv_soc_top.odb'…
+Reading design constraints file at '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/src/pnr.sdc'…
+[INFO] No information on clock propagation in input SDC file-- propagating all clocks.
+[INFO] Configuring cts characterization…
++ configure_cts_characterization 
+[INFO] Performing clock tree synthesis…
+[INFO] Looking for the following net(s): clk
+[INFO] Running Clock Tree Synthesis…
++ clock_tree_synthesis -buf_list sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_2 -root_buf sky130_fd_sc_hd__clkbuf_16 -sink_clustering_enable -apply_ndr half
+[INFO CTS-0050] Root buffer is sky130_fd_sc_hd__clkbuf_16.
+[INFO CTS-0051] Sink buffer is sky130_fd_sc_hd__clkbuf_8.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    sky130_fd_sc_hd__clkbuf_2
+                    sky130_fd_sc_hd__clkbuf_4
+                    sky130_fd_sc_hd__clkbuf_8
+[INFO CTS-0049] Characterization buffer is sky130_fd_sc_hd__clkbuf_8.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 196 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 196.
+[INFO CTS-0090]  Sinks will be clustered based on buffer max cap.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 13600  dbu (13 um).
+[INFO CTS-0023]  Original sink region: [(8085, 15020), (150615, 151020)].
+[INFO CTS-0024]  Normalized sink region: [(0.594485, 1.10441), (11.0746, 11.1044)].
+[INFO CTS-0025]     Width:  10.4801.
+[INFO CTS-0026]     Height: 10.0000.
+ Level 1
+    Direction: Horizontal
+    Sinks per sub-region: 98
+    Sub-region size: 5.2401 X 10.0000
+[INFO CTS-0034]     Segment length (rounded): 2.
+ Level 2
+    Direction: Vertical
+    Sinks per sub-region: 49
+    Sub-region size: 5.2401 X 5.0000
+[INFO CTS-0034]     Segment length (rounded): 2.
+ Level 3
+    Direction: Horizontal
+    Sinks per sub-region: 25
+    Sub-region size: 2.6200 X 5.0000
+[INFO CTS-0034]     Segment length (rounded): 1.
+ Level 4
+    Direction: Vertical
+    Sinks per sub-region: 13
+    Sub-region size: 2.6200 X 2.5000
+[INFO CTS-0034]     Segment length (rounded): 1.
+ Level 5
+    Direction: Horizontal
+    Sinks per sub-region: 7
+    Sub-region size: 1.3100 X 2.5000
+[INFO CTS-0034]     Segment length (rounded): 1.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 8.
+[INFO CTS-0035]  Number of sinks covered: 196.
+[INFO CTS-0018]     Created 49 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 3.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 3.
+[INFO CTS-0015]     Created 49 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 6:28, 7:4..
+[INFO CTS-0017]     Max level of the clock tree: 5.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 203
+[INFO CTS-0100]  Leaf buffers 0
+[INFO CTS-0101]  Average sink wire length 219.19 um
+[INFO CTS-0102]  Path depth 3 - 3
+[INFO CTS-0207]  Dummy loads inserted 7
+[INFO] Repairing long wires on clock nets…
+[INFO RSZ-0058] Using max wire length 6884um.
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+[INFO ODB-0403] 224 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               108     405.39
+  Tap cell                                308     385.37
+  Buffer                                    5      25.02
+  Clock buffer                             56    1098.55
+  Timing Repair Buffer                     84     840.81
+  Inverter                                 23      86.33
+  Sequential cell                         196    5149.94
+  Multi-Input combinational cell          547    4685.74
+  Total                                  1327   12677.16
+Writing OpenROAD database to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.odb'…
+Writing netlist to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.nl.v'…
+Writing powered netlist to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.pnl.v'…
+Writing layout to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.def'…
+Writing timing constraints to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.sdc'…
+[INFO] Legalizing…
++ detailed_placement -max_displacement  500 100 
+Placement Analysis
+---------------------------------
+total displacement        479.5 u
+average displacement        0.4 u
+max displacement            8.2 u
+original HPWL           15700.9 u
+legalized HPWL          16722.7 u
+delta HPWL                    7 %
+
+[INFO DPL-0020] Mirrored 396 instances
+[INFO DPL-0021] HPWL before           16722.7 u
+[INFO DPL-0022] HPWL after            15907.5 u
+[INFO DPL-0023] HPWL delta               -4.9 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+[INFO ODB-0403] 0 connections made, 0 conflicts skipped.
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               108     405.39
+  Tap cell                                308     385.37
+  Buffer                                    5      25.02
+  Clock buffer                             56    1098.55
+  Timing Repair Buffer                     84     840.81
+  Inverter                                 23      86.33
+  Sequential cell                         196    5149.94
+  Multi-Input combinational cell          547    4685.74
+  Total                                  1327   12677.16
+Writing OpenROAD database to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.odb'…
+Writing netlist to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.nl.v'…
+Writing powered netlist to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.pnl.v'…
+Writing layout to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.def'…
+Writing timing constraints to '/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/35-openroad-cts/riscv_soc_top.sdc'…
+%OL_CREATE_REPORT cts.rpt
+Total number of Clock Roots: 1.
+Total number of Buffers Inserted: 49.
+Total number of Clock Subnets: 49.
+Total number of Sinks: 196.
+Cells used:
+  sky130_fd_sc_hd__clkbuf_8: 16
+  sky130_fd_sc_hd__clkbuf_16: 33
+Dummys used:
+  sky130_fd_sc_hd__clkbuf_4: 7
+%OL_END_REPORT

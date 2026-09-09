@@ -113,7 +113,6 @@ module rv32i_core #(
 
   assign rs1_addr = instr[19:15];
   assign rs2_addr = instr[24:20];
-  assign rd_addr  = instr[11:7];
   assign func3    = instr[14:12];
 
   // ==================== Register File ====================

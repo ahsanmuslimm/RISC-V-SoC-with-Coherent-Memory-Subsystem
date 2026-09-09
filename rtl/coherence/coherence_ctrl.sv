@@ -59,11 +59,11 @@ module coherence_ctrl (
   output logic [1:0]  inv_idx1,
   input  logic        inv_ack1,
 
-  // Actual cache line states (for dispatch truth, R6)
-  input  logic [1:0]  state0_i[3:0],   // Actual state per line from cache 0
-  input  logic        valid0_i[3:0],
-  input  logic [1:0]  state1_i[3:0],   // Actual state per line from cache 1
-  input  logic        valid1_i[3:0],
+  // Actual cache line states (packed vectors for synthesis)
+  input  logic [7:0]  state0_i,         // Actual state per line from cache 0 (2 bits per line, packed)
+  input  logic [3:0]  valid0_i,         // Valid bits per line from cache 0 (packed)
+  input  logic [7:0]  state1_i,         // Actual state per line from cache 1 (2 bits per line, packed)
+  input  logic [3:0]  valid1_i,         // Valid bits per line from cache 1 (packed)
 
   // Control & status
   input  logic        coh_enable,       // Enable coherence (from MMIO)
@@ -114,8 +114,9 @@ module coherence_ctrl (
     inv_target = ~proc_core_q;
 
     remote_mirror_is_not_i = (mirror[inv_target][proc_idx_q] != I);
-    remote_actual_is_not_i = (valid1_i[proc_idx_q] && (state1_i[proc_idx_q] != I)) ||
-                              (valid0_i[proc_idx_q] && (state0_i[proc_idx_q] != I));
+    // Unpack state/valid from packed inputs
+    remote_actual_is_not_i = (valid0_i[proc_idx_q] && (state0_i[proc_idx_q*2 +: 2] != I)) ||
+                              (valid1_i[proc_idx_q] && (state1_i[proc_idx_q*2 +: 2] != I));
 
     remote_has_copy = remote_mirror_is_not_i || remote_actual_is_not_i;
   end

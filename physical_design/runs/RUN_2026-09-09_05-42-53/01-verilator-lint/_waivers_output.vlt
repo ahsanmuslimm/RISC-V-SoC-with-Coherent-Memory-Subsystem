@@ -1,0 +1,143 @@
+// DESCRIPTION: Verilator output: Waivers generated with --waiver-output
+
+`verilator_config
+
+// Below are suggested waivers. You have three options:
+//   1. Fix the reason for the linter warning in the Verilog sources
+//   2. Keep the waiver permanently if you are sure it is okay
+//   3. Keep the waiver temporarily to suppress the output
+
+// lint_off -rule PINCONNECTEMPTY -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Instance pin connected by name with empty reference: 'line_req_idx'*"
+
+// lint_off -rule PINCONNECTEMPTY -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Instance pin connected by name with empty reference: 'line_out'*"
+
+// lint_off -rule PINCONNECTEMPTY -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Instance pin connected by name with empty reference: 'doorbell'*"
+
+// lint_off -rule WIDTHTRUNC -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/sram_reg_array.sv" -match "Logical operator GENIF expects 1 bit on the If, but If's VARREF 'ASYNC_READ' generates 32 bits.*"
+
+// lint_off -rule WIDTHEXPAND -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Operator ASSIGNW expects 13 bits on the Assign RHS, but Assign RHS's REPLICATE generates 12 bits.*"
+
+// lint_off -rule WIDTHEXPAND -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Operator ASSIGNW expects 21 bits on the Assign RHS, but Assign RHS's REPLICATE generates 20 bits.*"
+
+// lint_off -rule WIDTHTRUNC -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 33 bits.*"
+
+// lint_off -rule WIDTHTRUNC -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 33 bits.*"
+
+// lint_off -rule WIDTHEXPAND -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's REPLICATE generates 8 bits.*"
+
+// lint_off -rule WIDTHEXPAND -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Operator ASSIGNW expects 11 bits on the Assign RHS, but Assign RHS's SEL generates 10 bits.*"
+
+// lint_off -rule WIDTHEXPAND -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Operator ASSIGNW expects 11 bits on the Assign RHS, but Assign RHS's SEL generates 10 bits.*"
+
+// lint_off -rule WIDTHTRUNC -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Input port connection 'raddr' expects 10 bits on the pin connection, but pin connection's VARREF 'raddr_word' generates 11 bits.*"
+
+// lint_off -rule WIDTHTRUNC -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Input port connection 'waddr' expects 10 bits on the pin connection, but pin connection's VARREF 'waddr_word' generates 11 bits.*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Signal is not used: 'sel_sram'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Signal is not used: 'sel_mmio'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Signal is not used: 'sel_uart'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/top/riscv_soc_top.sv" -match "Signal is not used: 'sel_gpio'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Signal is not used: 'dmem_err'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Signal is not driven, nor used: 'rf_wa_cu'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Signal is not used: 'ls_ctrl'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Signal is not used: 'is_jump'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/i_sram.sv" -match "Signal is not used: 'rst_n'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Signal is not used: 'bready'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Bits of signal are not used: 'waddr_word'[10]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Bits of signal are not used: 'raddr_word'[10]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Signal is not used: 'awaddr_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Signal is not used: 'wdata_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Signal is not used: 'wstrb_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/shared_sram.sv" -match "Signal is not used: 'araddr_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache.sv" -match "Bits of signal are not used: 'req_addr'[1:0]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache.sv" -match "Signal is not used: 'wr_idx'*"
+
+// lint_off -rule UNUSEDPARAM -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Parameter is not used: 'CORE_ID'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'cache_miss'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'coh_inv_idx'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'm_rresp'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'we_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not driven, nor used: 'is_write_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'fill_idx_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'fill_tag_q'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/cache/d_cache_mgr.sv" -match "Signal is not used: 'notify_pending'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/coherence/coherence_ctrl.sv" -match "Bits of signal are not used: 'write_addr0'[31:4,1:0]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/coherence/coherence_ctrl.sv" -match "Bits of signal are not used: 'write_addr1'[31:4,1:0]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv" -match "Bits of signal are not used: 'awaddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv" -match "Bits of signal are not used: 'wdata'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv" -match "Signal is not used: 'wstrb'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv" -match "Bits of signal are not used: 'araddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/uart_core.sv" -match "Signal is not driven, nor used: 'bresp_valid_d'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Bits of signal are not used: 'awaddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Bits of signal are not used: 'wdata'[31:8,5:0]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Signal is not used: 'wstrb'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Bits of signal are not used: 'araddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/gpio_led.sv" -match "Signal is not driven, nor used: 'bresp_valid_d'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv" -match "Bits of signal are not used: 'awaddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv" -match "Signal is not used: 'wstrb'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv" -match "Bits of signal are not used: 'araddr'[31:8]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/peripheral/mmio_regs.sv" -match "Signal is not driven, nor used: 'bresp_valid_d'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv" -match "Signal is not driven, nor used: 'shift_level_16'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv" -match "Signal is not driven, nor used: 'srl_level_16'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv" -match "Signal is not driven, nor used: 'sra_level_16'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/alu.sv" -match "Signal is not used: 'sign_ext_8'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Signal is not used: 'rs1'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/control_unit.sv" -match "Bits of signal are not used: 'func7'[6,4:0]*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/memory/sram_reg_array.sv" -match "Signal is not used: 'rst_n'*"
+
+// lint_off -rule CASEINCOMPLETE -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Case values incompletely covered (example pattern 0x3)*"
+
+// lint_off -rule CASEINCOMPLETE -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Case values incompletely covered (example pattern 0x3)*"
+
+// lint_off -rule CASEINCOMPLETE -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Case values incompletely covered (example pattern 0x3)*"
+
+// lint_off -rule CASEINCOMPLETE -file "*/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/rtl/core/rv32i_core.sv" -match "Case values incompletely covered (example pattern 0x3)*"
+

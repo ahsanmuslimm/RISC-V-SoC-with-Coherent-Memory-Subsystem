@@ -66,8 +66,9 @@ module gpio_led (
     assign offset_aw = awaddr[7:0];
     assign offset_ar = araddr[7:0];
     
-    // Stretcher constant: 2²² cycles ≈ 84 ms @ 50 MHz
-    localparam STRETCH_CNT = 22'd4194304 - 22'd1;
+    // Stretcher constant: 2²²-1 cycles ≈ 84 ms @ 50 MHz
+    // Note: write 4194303 directly — 22'd4194304 would overflow a 22-bit literal
+    localparam STRETCH_CNT = 22'd4194303;
     
     // =====================================================================
     // AXI4-LITE WRITE INTERFACE

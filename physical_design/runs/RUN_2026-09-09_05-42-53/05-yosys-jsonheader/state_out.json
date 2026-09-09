@@ -1,0 +1,9 @@
+{
+    "json_h": "/home/cl4/Desktop/training/RISC-V-SoC-with-Coherent-Memory-Subsystem/physical_design/runs/RUN_2026-09-09_05-42-53/05-yosys-jsonheader/riscv_soc_top.h.json",
+    "metrics": {
+        "design__lint_error__count": 0,
+        "design__lint_timing_construct__count": 0,
+        "design__lint_warning__count": 65,
+        "design__inferred_latch__count": 0
+    }
+}
