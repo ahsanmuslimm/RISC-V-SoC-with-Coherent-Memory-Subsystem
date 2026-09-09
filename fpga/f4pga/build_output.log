@@ -1,0 +1,8 @@
+Makefile:176: warning: overriding recipe for target 'build'
+Makefile:72: warning: ignoring old recipe for target 'build'
+Cleaning build artifacts...
+✓ Clean complete
+make: Circular synthesis <- build dependency dropped.
+Checking required tools...
+ERROR: nextpnr-xilinx not found
+make: *** [Makefile:171: check_tools] Error 1

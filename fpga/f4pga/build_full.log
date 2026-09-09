@@ -1,0 +1,16 @@
+Makefile:176: warning: overriding recipe for target 'build'
+Makefile:72: warning: ignoring old recipe for target 'build'
+Cleaning build artifacts...
+✓ Clean complete
+make: Circular synthesis <- build dependency dropped.
+Checking required tools...
+✓ All required tools found
+==========================================
+Running synthesis with Yosys...
+==========================================
+yosys -m ghdl -p "read_verilog ../../rtl/**/*.sv; \
+        hierarchy -check -top riscv_soc_top; \
+        proc; opt_clean -purge; \
+        synth_xilinx -json build/riscv_soc_arty100t.json -flatten"
+ERROR: Can't load module `./ghdl': /home/cl4/opt/f4pga/xc7/conda/envs/xc7/bin/../share/yosys/plugins/ghdl.so: cannot open shared object file: No such file or directory
+make: *** [Makefile:83: synthesis] Error 1

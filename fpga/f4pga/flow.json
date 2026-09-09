@@ -1,0 +1,138 @@
+{
+  "name": "RISC-V Dual-Core SoC with Coherent Memory Subsystem",
+  "description": "F4PGA design flow for Arty A7-100T FPGA board",
+  "toolchain": "F4PGA",
+  "target": "xc7a100t",
+  "board": "arty-a7-100t",
+  "part": "XC7A100T-CSG324",
+  
+  "steps": [
+    {
+      "name": "synthesis",
+      "tool": "yosys",
+      "description": "Logic synthesis using Yosys",
+      "config": {
+        "top_module": "riscv_soc_top",
+        "input_files": [
+          "../../rtl/core/*.sv",
+          "../../rtl/memory/*.sv",
+          "../../rtl/cache/*.sv",
+          "../../rtl/coherence/*.sv",
+          "../../rtl/bus/*.sv",
+          "../../rtl/peripheral/*.sv",
+          "../../rtl/top/*.sv"
+        ],
+        "output_format": "json",
+        "synthesis_strategy": "xilinx",
+        "flatten": true,
+        "options": [
+          "-m ghdl",
+          "read_verilog",
+          "hierarchy -check",
+          "proc",
+          "opt_clean -purge",
+          "synth_xilinx -flatten -json"
+        ]
+      }
+    },
+    {
+      "name": "pack",
+      "tool": "f4pga",
+      "description": "Packing (logic block mapping)",
+      "depends_on": "synthesis",
+      "config": {
+        "input": "build/riscv_soc_arty100t.json",
+        "output": "build/riscv_soc_arty100t.eblif",
+        "device": "xc7a100t_test"
+      }
+    },
+    {
+      "name": "place",
+      "tool": "f4pga",
+      "description": "Placement on FPGA fabric",
+      "depends_on": "pack",
+      "config": {
+        "input": "build/riscv_soc_arty100t.eblif",
+        "output": "build/riscv_soc_arty100t.place",
+        "device": "xc7a100t_test"
+      }
+    },
+    {
+      "name": "route",
+      "tool": "f4pga",
+      "description": "Routing of signals between logic blocks",
+      "depends_on": "place",
+      "config": {
+        "input": "build/riscv_soc_arty100t.place",
+        "output": "build/riscv_soc_arty100t.route",
+        "device": "xc7a100t_test"
+      }
+    },
+    {
+      "name": "write_bitstream",
+      "tool": "f4pga",
+      "description": "Generate final bitstream for device programming",
+      "depends_on": "route",
+      "config": {
+        "input": "build/riscv_soc_arty100t.route",
+        "output": "build/riscv_soc_arty100t.bit",
+        "device": "xc7a100t_test",
+        "options": {
+          "format": "bit",
+          "compress": false
+        }
+      }
+    }
+  ],
+  
+  "environment": {
+    "F4PGA_INSTALL_DIR": "/opt/f4pga",
+    "FPGA_FAM": "xc7",
+    "DEVICE": "xc7a100t_test",
+    "PART_YAML": "/opt/f4pga/share/f4pga/xc7a100t_test/utils/xc7a100t_test.yaml"
+  },
+  
+  "resources": {
+    "constraints": {
+      "pin_constraints": "arty100t.xdc",
+      "format": "xdc"
+    },
+    "timing": {
+      "clock_period_ns": 10.0,
+      "clock_name": "clk",
+      "timing_allow_fail": true
+    }
+  },
+  
+  "outputs": {
+    "bitstream": "build/riscv_soc_arty100t.bit",
+    "netlist": "build/riscv_soc_arty100t.net.json",
+    "reports": {
+      "synthesis": "build/reports/synth.rpt",
+      "place_route": "build/reports/pnr.rpt",
+      "timing": "build/reports/timing.rpt"
+    }
+  },
+  
+  "programming": {
+    "method": "jtag",
+    "interface": "ch340",
+    "tool": "openocd",
+    "board_config": "board/arty_a7.cfg",
+    "options": {
+      "bus_width": "spi",
+      "spi_width": 4
+    }
+  },
+  
+  "notes": [
+    "Ensure F4PGA is installed at /opt/f4pga",
+    "Source F4PGA environment before running build",
+    "Arty A7-100T uses XC7A100T Artix-7 device",
+    "Clock constraint: 100 MHz (10 ns period)",
+    "UART interface: 115200 8N1 via CH340 USB bridge",
+    "GPIO/LED: 8-bit output to on-board LEDs",
+    "Coherence protocol: I/S/M (Invalid/Shared/Modified)",
+    "Cache configuration: 4-line direct-mapped L1 per core"
+  ]
+}
