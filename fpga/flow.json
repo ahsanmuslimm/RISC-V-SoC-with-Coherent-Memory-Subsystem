@@ -1,23 +1,26 @@
 {
-  "version": "1.0",
-  "project": "riscv_soc_arty100t",
-  "device": "xc7a100t_test",
-  "board": "arty-a7-100t",
-  "design": {
-    "rtl": [
-      "/workspace/rtl/core/*.sv",
-      "/workspace/rtl/memory/*.sv",
-      "/workspace/rtl/cache/*.sv",
-      "/workspace/rtl/coherence/*.sv",
-      "/workspace/rtl/bus/*.sv",
-      "/workspace/rtl/peripheral/*.sv",
-      "/workspace/rtl/top/*.sv"
-    ],
-    "top_module": "riscv_soc_top",
-    "vpr": {
-      "options": "--seed 42"
-    }
+  "default_part": "XC7A100TCSG324-1",
+  "values": {
+    "top": "riscv_soc_top"
   },
-  "flow": "SymbiFlow",
-  "stages": ["synthesis", "pack", "place", "route", "write_bitstream"]
+  "dependencies": {
+    "sources": [
+      "../rtl/core/*.sv",
+      "../rtl/memory/*.sv",
+      "../rtl/cache/*.sv",
+      "../rtl/coherence/*.sv",
+      "../rtl/bus/*.sv",
+      "../rtl/peripheral/*.sv",
+      "../rtl/top/*.sv"
+    ],
+    "synth_log": "synth.log",
+    "pack_log": "pack.log"
+  },
+  "XC7A100TCSG324-1": {
+    "default_target": "bitstream",
+    "dependencies": {
+      "build_dir": "build/arty_100",
+      "xdc": ["arty100t.xdc"]
+    }
+  }
 }
