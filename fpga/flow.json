@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "project": "riscv_soc_arty100t",
+  "device": "xc7a100t_test",
+  "board": "arty-a7-100t",
+  "design": {
+    "rtl": [
+      "/workspace/rtl/core/*.sv",
+      "/workspace/rtl/memory/*.sv",
+      "/workspace/rtl/cache/*.sv",
+      "/workspace/rtl/coherence/*.sv",
+      "/workspace/rtl/bus/*.sv",
+      "/workspace/rtl/peripheral/*.sv",
+      "/workspace/rtl/top/*.sv"
+    ],
+    "top_module": "riscv_soc_top",
+    "vpr": {
+      "options": "--seed 42"
+    }
+  },
+  "flow": "SymbiFlow",
+  "stages": ["synthesis", "pack", "place", "route", "write_bitstream"]
+}

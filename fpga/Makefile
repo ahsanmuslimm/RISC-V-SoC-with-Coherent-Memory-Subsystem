@@ -36,6 +36,8 @@ OPENOCD = openocd
 
 # F4PGA environment (set these or source F4PGA setup)
 F4PGA_INSTALL_DIR ?= /opt/f4pga
+CONDA_ENV_DIR ?= /opt/conda/envs/xc7
+CHIPDB ?= $(CONDA_ENV_DIR)/share/nextpnr-xilinx/xc7a100tcsg324-1.bba
 PART_YAML = $(F4PGA_INSTALL_DIR)/share/f4pga/xc7a100t_test/utils/xc7a100t_test.yaml
 
 # Synthesis options
@@ -80,10 +82,19 @@ synthesis: $(BUILD_DIR) check_tools
 	@echo "=========================================="
 	@echo "Running synthesis with Yosys..."
 	@echo "=========================================="
-	$(YOSYS) -m ghdl -p "read_verilog $(RTL_DIR)/**/*.sv; \
+	@mkdir -p $(BUILD_DIR)
+	$(YOSYS) -p "read_verilog -sv $(RTL_DIR)/core/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/memory/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/cache/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/coherence/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/bus/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/peripheral/*.sv; \
+	        read_verilog -sv $(RTL_DIR)/top/*.sv; \
 	        hierarchy -check -top riscv_soc_top; \
 	        proc; opt_clean -purge; \
-	        synth_xilinx -json $(BUILD_DIR)/$(PROJECT_NAME).json -flatten"
+	        flatten; \
+	        synth_xilinx; \
+	        write_json $(BUILD_DIR)/$(PROJECT_NAME).json"
 	@echo "✓ Synthesis complete: $(BUILD_DIR)/$(PROJECT_NAME).json"
 	@ls -lh $(BUILD_DIR)/$(PROJECT_NAME).json
 
@@ -99,15 +110,13 @@ pnr: synthesis
 		echo "Using constraints: $(CONSTRAINTS_DIR)/arty100t.xdc"; \
 		$(NEXTPNR) --json $(BUILD_DIR)/$(PROJECT_NAME).json \
 		          --xdc $(CONSTRAINTS_DIR)/arty100t.xdc \
-		          --xact_map $(PART_YAML) \
-		          --device $(DEVICE) \
+		          --chipdb $(CHIPDB) \
 		          --write $(BUILD_DIR)/$(PROJECT_NAME).net.json \
 		          $(PNR_OPTIONS); \
 	else \
 		echo "WARNING: No constraints file found, running without constraints"; \
 		$(NEXTPNR) --json $(BUILD_DIR)/$(PROJECT_NAME).json \
-		          --xact_map $(PART_YAML) \
-		          --device $(DEVICE) \
+		          --chipdb $(CHIPDB) \
 		          --write $(BUILD_DIR)/$(PROJECT_NAME).net.json \
 		          $(PNR_OPTIONS); \
 	fi
