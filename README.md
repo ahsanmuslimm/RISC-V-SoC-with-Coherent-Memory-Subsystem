@@ -201,4 +201,4 @@ The project leverages open-source EDA tools and methodologies, contributing to t
 
 **Project Status**: Implementation Complete | Verification: 100% Coverage | Documentation: Comprehensive
 
-**Contact**: Muhammad Ahsan Talib Shaikh | USTP INSPIRE Trainee Program | University of Engineering and Technology
+**Developer**: Muhammad Ahsan Talib Shaikh | USTP INSPIRE Trainee Program | MERL - UIT University 
