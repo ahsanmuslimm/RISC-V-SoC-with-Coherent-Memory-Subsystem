@@ -8,8 +8,8 @@
 
 **Program:** PSEB Sponsored USTP INSPIRE Trainee Program - Capstone Project  
 **Developer:** Muhammad Ahsan Talib Shaikh  
-**Institution:** University of Engineering and Technology (UET)  
-**Date:** September 2026  
+**Institution:**  Microelectronics Research Lab (MERL)  UIT Univeristy
+**Date:** September 2026
 **License:** Apache License 2.0
 
 ---
